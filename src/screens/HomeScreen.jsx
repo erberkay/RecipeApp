@@ -15,6 +15,9 @@ import TimeIcon from '../assets/icons/TimeIcon';
 
 const MMKV = new MMKVLoader().initialize()
 
+
+
+
 const HomeScreen = ({ navigation }) => {
   const [recipes, setRecipes] = useMMKVStorage('testRecipes', MMKV, [])
 
@@ -72,106 +75,147 @@ const HomeScreen = ({ navigation }) => {
     }
   }, [])
 
+  const ListHeaderComponent = () => {
+    return (
+      <View style={styles.container}>
+        <View style={styles.rowFlexMarginEight}>
+          <Text style={styles.welcomeText}>Welcome</Text>
+          <Text style={styles.usernameText}>
+            {' ' + getUser().username.charAt(0).toUpperCase() + getUser().username.slice(1)}
+            {
+              // Capitalized first character of the name.
+            }
+          </Text> 
+        </View>
+        <Text style={{...styles.usernameText, fontSize: 40, marginTop: 8,}}>
+          What would you like to cook today?
+        </Text>
+        <View style={styles.rowFlexMarginEight}>
+          <View style={styles.searchWrapper}>
+            <TextInput 
+              style={styles.search}
+              placeholder='Search Recipe'
+              placeholderTextColor={'white'}
+            />
+            <SearchIcon/>
+          </View>
+          <TouchableOpacity
+            style={styles.filterWrapper}
+          >
+            <FilterIcon/>
+          </TouchableOpacity>
+        </View>
+        <View>
+          <View style={{...styles.rowFlexMarginEight, justifyContent: 'space-between'}}>
+            <Text style={styles.lineText}>Today's Fresh Recipe</Text>
+            <TouchableOpacity>
+              <Text style={styles.linePressableText}>See All</Text>
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            style={styles.todaysFlatList}
+            horizontal
+            data={recipes}
+            removeClippedSubviews={false}
+            renderItem={recipe => {
+              return (
+                <View style={styles.horizontalCard}>
+                  <View style={styles.upperCardContainer}>
+                    <TouchableOpacity
+                      onPress={() => {
+                        setRecipes([
+                          ...recipes.slice(0, recipe.index), 
+                          {
+                            favorite: !recipe.item.favorite,
+                            image: recipe.item.image,
+                            category: recipe.item.category,
+                            name: recipe.item.name,
+                            time: recipe.item.time,
+                            rating: recipe.item.rating,
+                          },
+                          ...recipes.slice(recipe.index + 1)
+                        ])
+                      }}
+                    >
+                      {recipe.item.favorite ? <FavoriteIcon/> : <NotFavoriteIcon/>}
+                    </TouchableOpacity>
+                    <Image style={styles.horizontalCardImage} source={recipe.item.image}/>
+                  </View>
+                  <Text style={styles.categoryText}>{recipe.item.category.charAt(0).toUpperCase() + recipe.item.category.slice(1)}</Text>
+                  <Text style={styles.nameText}>{recipe.item.name}</Text>
+                  <View style={styles.rowFlexMarginEight}>
+                    <TimeIcon/>
+                    <Text style={styles.timeText}>{recipe.item.time}</Text>
+                  </View>
+                  <Text style={styles.nameText}>{recipe.item.rating}/5</Text>
+                </View>
+              )
+            }}
+          />
+        </View>
+        <View>
+          <View style={{...styles.rowFlexMarginEight, justifyContent: 'space-between'}}>
+            <Text style={styles.lineText}>Recommended</Text>
+            <TouchableOpacity>
+              <Text style={styles.linePressableText}>See All</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+      </View>
+    )
+  }
+
   return (
-    <ScrollView
+    <FlatList
+      data={recipes}
       style={styles.container}
       contentContainerStyle={styles.contentContainer}
-    >
-      <View style={styles.rowFlexMarginEight}>
-        <Text style={styles.welcomeText}>Welcome</Text>
-        <Text style={styles.usernameText}>
-          {' ' + getUser().username.charAt(0).toUpperCase() + getUser().username.slice(1)}
-          {
-            // Capitalized first character of the name.
-          }
-        </Text> 
-      </View>
-      <Text style={{...styles.usernameText, fontSize: 40, marginTop: 8,}}>
-        What would you like to cook today?
-      </Text>
-      <View style={styles.rowFlexMarginEight}>
-        <View style={styles.searchWrapper}>
-          <TextInput 
-            style={styles.search}
-            placeholder='Search Recipe'
-            placeholderTextColor={'white'}
-          />
-          <SearchIcon/>
-        </View>
-        <TouchableOpacity
-          style={styles.filterWrapper}
-        >
-          <FilterIcon/>
-        </TouchableOpacity>
-      </View>
-      <View>
-        <View style={{...styles.rowFlexMarginEight, justifyContent: 'space-between'}}>
-          <Text style={styles.lineText}>Today's Fresh Recipe</Text>
-          <TouchableOpacity>
-            <Text style={styles.linePressableText}>See All</Text>
-          </TouchableOpacity>
-        </View>
-        <FlatList
-          style={styles.todaysFlatList}
-          horizontal
-          data={recipes}
-          removeClippedSubviews={false}
-          renderItem={recipe => {
-            return (
-              <View style={styles.horizontalCard}>
-                <View style={styles.upperCardContainer}>
-                  <TouchableOpacity
-                    onPress={() => {
-                      setRecipes([
-                        ...recipes.slice(0, recipe.index), 
-                        {
-                          favorite: !recipe.item.favorite,
-                          image: recipe.item.image,
-                          category: recipe.item.category,
-                          name: recipe.item.name,
-                          time: recipe.item.time,
-                          rating: recipe.item.rating,
-                        },
-                        ...recipes.slice(recipe.index + 1)
-                      ])
-                    }}
-                  >
-                    {recipe.item.favorite ? <FavoriteIcon/> : <NotFavoriteIcon/>}
-                  </TouchableOpacity>
-                  <Image source={recipe.item.image}/>
-                </View>
-                <Text style={styles.categoryText}>{recipe.item.category.charAt(0).toUpperCase() + recipe.item.category.slice(1)}</Text>
-                <Text style={styles.nameText}>{recipe.item.name}</Text>
-                <View style={styles.rowFlexMarginEight}>
-                  <TimeIcon/>
-                  <Text style={styles.timeText}>{recipe.item.time}</Text>
-                </View>
-                <Text style={styles.nameText}>{recipe.item.rating}/5</Text>
+      renderItem={recipe => {
+        return (
+          <View style={styles.verticalCard}>
+            <Image style={styles.verticalCardImage} source={recipe.item.image} resizeMethod='resize' resizeMode='cover' />
+            <View style={styles.verticalCardTextContainer}>
+              <Text style={styles.verticalCardName} >{recipe.item.name}</Text>
+              <Text style={styles.verticalCardRating} >{recipe.item.rating}/5</Text>
+            </View>
+            <View style={styles.verticalCardRightContainer}>
+              <TouchableOpacity
+                onPress={() => {
+                  setRecipes([
+                    ...recipes.slice(0, recipe.index), 
+                    {
+                      favorite: !recipe.item.favorite,
+                      image: recipe.item.image,
+                      category: recipe.item.category,
+                      name: recipe.item.name,
+                      time: recipe.item.time,
+                      rating: recipe.item.rating,
+                    },
+                    ...recipes.slice(recipe.index + 1)
+                  ])
+                }}
+              >
+                {recipe.item.favorite ? <FavoriteIcon/> : <NotFavoriteIcon/>}
+              </TouchableOpacity>
+              <View style={styles.verticalCardTimeContainer}>
+                <TimeIcon/>
+                <Text style={styles.verticalCardTimeText}>{recipe.item.time}</Text>
               </View>
-            )
-          }}
-        />
-      </View>
-      <View>
-        <View style={{...styles.rowFlexMarginEight, justifyContent: 'space-between'}}>
-          <Text style={styles.lineText}>Recommended</Text>
-          <TouchableOpacity>
-            <Text style={styles.linePressableText}>See All</Text>
-          </TouchableOpacity>
-        </View>
-      </View>
-    </ScrollView>
+            </View>
+          </View>
+        )
+      }}
+      ListHeaderComponent={ListHeaderComponent}
+    />
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#1E1E1E',
-    overflow: 'visible'
   },
   contentContainer: {
     paddingHorizontal: 24,
-    overflow: 'visible'
   },
   rowFlexMarginEight: {
     flexDirection: 'row',
@@ -241,6 +285,10 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     height: 112,
   },
+  horizontalCardImage: {
+    width: 96,
+    height: 96,
+  },
   categoryText: {
     color: '#2958FF',
     fontSize: 12,
@@ -252,6 +300,42 @@ const styles = StyleSheet.create({
   timeText: {
     color: '#FF6B00',
     marginLeft: 8,
+  },
+  verticalCard: {
+    width: 344,
+    height: 64,
+    backgroundColor: '#373737',
+    borderRadius: 10,
+    marginBottom: 8,
+    flexDirection: 'row',
+    paddingHorizontal: 8,
+  },
+  verticalCardImage: {
+    width: 64,
+    height: 64,
+  },
+  verticalCardTextContainer: {
+    justifyContent: 'center',
+    paddingHorizontal: 16,
+  },
+  verticalCardName: {
+    color: 'white',
+    fontSize: 20,
+  },
+  verticalCardRating: {
+    color: 'white',
+  },
+  verticalCardRightContainer: {
+    flex: 1,
+    alignItems: 'flex-end',
+    justifyContent: 'space-around',
+  },
+  verticalCardTimeContainer: {
+    flexDirection: 'row',
+  },
+  verticalCardTimeText: {
+    marginLeft: 8,
+    color: '#FF6B00'
   },
 
 })
