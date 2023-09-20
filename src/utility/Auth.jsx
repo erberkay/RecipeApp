@@ -3,7 +3,7 @@ import { MMKVLoader, useMMKVStorage } from 'react-native-mmkv-storage'
 
 const MMKV = new MMKVLoader().initialize()
 
-function useAuth() {
+const useAuth = () => {
   const [users, setUsers] = useMMKVStorage('users', MMKV, [])
   const [user, setUser] = useMMKVStorage('user', MMKV, {})
 

@@ -6,7 +6,7 @@ import LoginScreen from '../screens/LoginScreen';
 
 const Stack = createNativeStackNavigator();
 
-function AuthNavigator() {
+const AuthNavigator = () => {
   return (
     <Stack.Navigator
       initialRouteName="RegisterScreen"

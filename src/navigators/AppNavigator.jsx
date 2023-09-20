@@ -6,9 +6,9 @@ import RootNavigator from './RootNavigator';
 
 import useAuth from '../utility/Auth';
 
-function AppNavigator() {
+const AppNavigator = () => {
   
-  const { Login, Register, isLoggedIn, getUser } = useAuth();
+  const { isLoggedIn } = useAuth();
   
   return (
     <NavigationContainer>

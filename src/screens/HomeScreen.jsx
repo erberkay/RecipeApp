@@ -3,7 +3,7 @@ import { View, Text, Button } from 'react-native';
 
 import useAuth from '../utility/Auth';
 
-function HomeScreen({ navigation }) {
+const HomeScreen = ({ navigation }) => {
 
   const { SignOut } = useAuth();
   
