@@ -15,11 +15,23 @@ import TimeIcon from '../assets/icons/TimeIcon';
 
 const MMKV = new MMKVLoader().initialize()
 
-
-
-
 const HomeScreen = ({ navigation }) => {
   const [recipes, setRecipes] = useMMKVStorage('testRecipes', MMKV, [])
+
+  const getImageResources = (imageName) => {
+    const staticImages = {
+      'toast_with_berries': require('../assets/images/toast_with_berries.png'),
+      'chicken_burger': require('../assets/images/chicken_burger.png'),
+      'chocalate_cake': require('../assets/images/chocalate_cake.png'),
+      'cup_cake': require('../assets/images/cup_cake.png'),
+    }
+
+    if (staticImages[imageName]) {
+      return staticImages[imageName]
+    }
+
+    return { uri: imageName }
+  }
 
   const { SignOut, getUser } = useAuth();
   
@@ -41,7 +53,7 @@ const HomeScreen = ({ navigation }) => {
       setRecipes([
         {
           favorite: true,
-          image: require('../assets/images/toast_with_berries.png'),
+          image: 'toast_with_berries',
           category: 'breakfast',
           name: 'Toast with Berries',
           time: '10:00',
@@ -49,7 +61,7 @@ const HomeScreen = ({ navigation }) => {
         },
         {
           favorite: false,
-          image: require('../assets/images/chicken_burger.png'),
+          image: 'chicken_burger',
           category: 'dinner',
           name: 'Chicken Burger',
           time: '20:00',
@@ -57,7 +69,7 @@ const HomeScreen = ({ navigation }) => {
         },
         {
           favorite: false,
-          image: require('../assets/images/chocalate_cake.png'),
+          image: 'chocalate_cake',
           category: 'desert',
           name: 'Chocolate Cake',
           time: '30:00',
@@ -65,7 +77,7 @@ const HomeScreen = ({ navigation }) => {
         },
         {
           favorite: false,
-          image: require('../assets/images/cup_cake.png'),
+          image: 'cup_cake',
           category: 'desert',
           name: 'Cup Cake',
           time: '10:00',
@@ -139,7 +151,7 @@ const HomeScreen = ({ navigation }) => {
                     >
                       {recipe.item.favorite ? <FavoriteIcon/> : <NotFavoriteIcon/>}
                     </TouchableOpacity>
-                    <Image style={styles.horizontalCardImage} source={recipe.item.image}/>
+                    <Image style={styles.horizontalCardImage} source={getImageResources(recipe.item.image)}/>
                   </View>
                   <Text style={styles.categoryText}>{recipe.item.category.charAt(0).toUpperCase() + recipe.item.category.slice(1)}</Text>
                   <Text style={styles.nameText}>{recipe.item.name}</Text>
@@ -173,7 +185,7 @@ const HomeScreen = ({ navigation }) => {
       renderItem={recipe => {
         return (
           <View style={styles.verticalCard}>
-            <Image style={styles.verticalCardImage} source={recipe.item.image} resizeMethod='resize' resizeMode='cover' />
+            <Image style={styles.verticalCardImage} source={getImageResources(recipe.item.image)} resizeMethod='resize' resizeMode='cover' />
             <View style={styles.verticalCardTextContainer}>
               <Text style={styles.verticalCardName} >{recipe.item.name}</Text>
               <Text style={styles.verticalCardRating} >{recipe.item.rating}/5</Text>
