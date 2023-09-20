@@ -15,25 +15,25 @@ import TimeIcon from '../assets/icons/TimeIcon';
 
 const MMKV = new MMKVLoader().initialize()
 
+const getImageResources = (imageName) => {
+  const staticImages = {
+    'toast_with_berries': require('../assets/images/toast_with_berries.png'),
+    'chicken_burger': require('../assets/images/chicken_burger.png'),
+    'chocalate_cake': require('../assets/images/chocalate_cake.png'),
+    'cup_cake': require('../assets/images/cup_cake.png'),
+  }
+
+  if (staticImages[imageName]) {
+    return staticImages[imageName]
+  }
+
+  return { uri: imageName }
+}
+
 const HomeScreen = ({ navigation }) => {
   const [recipes, setRecipes] = useMMKVStorage('testRecipes', MMKV, [])
 
-  const getImageResources = (imageName) => {
-    const staticImages = {
-      'toast_with_berries': require('../assets/images/toast_with_berries.png'),
-      'chicken_burger': require('../assets/images/chicken_burger.png'),
-      'chocalate_cake': require('../assets/images/chocalate_cake.png'),
-      'cup_cake': require('../assets/images/cup_cake.png'),
-    }
-
-    if (staticImages[imageName]) {
-      return staticImages[imageName]
-    }
-
-    return { uri: imageName }
-  }
-
-  const { SignOut, getUser } = useAuth();
+  const { getUser } = useAuth();
   
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -43,7 +43,11 @@ const HomeScreen = ({ navigation }) => {
         </TouchableOpacity>
       ),
       headerRight: () => (
-        <TouchableOpacity>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate('MenuScreen')
+          }}
+        >
           <MenuIcon/>
         </TouchableOpacity>
       )
