@@ -30,7 +30,7 @@ const useAuth = () => {
       setUsers([...users, { username: username, password: password, email: email }])
       return true
     } else {
-      console.log('Password confirm not same or there are unfilled inputss')
+      console.log('Password and confirm not same or there are unfilled inputss')
       return false
     }
   }
