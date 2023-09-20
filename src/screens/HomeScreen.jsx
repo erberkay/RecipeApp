@@ -306,7 +306,7 @@ const styles = StyleSheet.create({
     height: 96,
   },
   categoryText: {
-    color: '#2958FF',
+    color: 'aqua',
     fontSize: 12,
   },
   nameText: {
@@ -348,6 +348,7 @@ const styles = StyleSheet.create({
   },
   verticalCardTimeContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   verticalCardTimeText: {
     marginLeft: 8,
