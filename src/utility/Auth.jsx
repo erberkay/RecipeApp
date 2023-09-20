@@ -4,38 +4,54 @@ import { MMKVLoader, useMMKVStorage } from 'react-native-mmkv-storage'
 const MMKV = new MMKVLoader().initialize()
 
 function useAuth() {
-  const [loggedIn, setLoggedIn] = useMMKVStorage('loggedIn', MMKV, false)
   const [users, setUsers] = useMMKVStorage('users', MMKV, [])
+  const [user, setUser] = useMMKVStorage('user', MMKV, {})
 
   const Login = (username, password) => {
-    const [users, setUsers] = useMMKVStorage('users', MMKV, [])
-
-    users.forEach(() => {
-      if (users.username === username && users.password == password) {
-        setLoggedIn(true)
+    let loggedIn = false
+    users.forEach(user => {
+      if (user.username === username && user.password == password) {
+        console.log('login')
+        setUser(user)
+        loggedIn = true
         return true
       }
     })
-    setLoggedIn(false)
-    return false
+    if (!loggedIn) {
+      console.log('loginout')
+      setUser({})
+      return false
+    }
   }
 
 
   const Register = (username, email, password, passwordConfirm) => {
-    if (password === passwordConfirm) {
+    if (password === passwordConfirm && username.length > 0 && email.length > 0 && password.length > 0) {
       setUsers([...users, { username: username, password: password, email: email }])
       return true
     } else {
-      console.log('Password confirm not same')
+      console.log('Password confirm not same or there are unfilled inputss')
       return false
     }
   }
 
   const isLoggedIn = () => {
-    return loggedIn
+    if (user?.username) {
+      return true
+    } else {
+      return false
+    }
   }
 
-  return { Login, Register, isLoggedIn }
+  const getUser = () => {
+    return user
+  }
+
+  const SignOut = () => {
+    setUser({})
+  }
+
+  return { Login, Register, isLoggedIn, getUser, SignOut }
 }
 
 export default useAuth
