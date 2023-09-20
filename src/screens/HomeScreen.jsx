@@ -1,5 +1,5 @@
-import React from 'react';
-import { View, Text, Button } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, TouchableOpacity, ScrollView, FlatList, StyleSheet, TextInput } from 'react-native';
 
 import useAuth from '../utility/Auth';
 
@@ -8,13 +8,14 @@ const HomeScreen = ({ navigation }) => {
   const { SignOut } = useAuth();
   
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>HomeScreen</Text>
-      <Button title="Go to RegisterScreen" onPress={() => {
-        SignOut()
-      }} />
-    </View>
+    <ScrollView>
+      
+    </ScrollView>
   );
 }
+
+const styles = StyleSheet.create({
+
+})
 
 export default HomeScreen;
