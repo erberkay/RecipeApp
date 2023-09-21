@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "951089532743",
+    "project_id": "recipeapprn-674c4",
+    "storage_bucket": "recipeapprn-674c4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:951089532743:android:f5f2f5f777fe70b72bc662",
+        "android_client_info": {
+          "package_name": "com.emresafacelik.recipeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBX6AjYx5TVgW_us5uLm1_Gl-SyV2T53Ns"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

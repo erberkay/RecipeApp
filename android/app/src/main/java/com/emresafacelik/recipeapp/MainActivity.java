@@ -1,4 +1,4 @@
-package com.recipeapp;
+package com.emresafacelik.recipeapp;
 
 import android.os.Bundle;
 
