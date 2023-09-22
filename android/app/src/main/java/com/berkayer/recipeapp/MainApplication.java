@@ -1,4 +1,4 @@
-package com.emresafacelik.recipeapp;
+package com.berkayer.recipeapp;
 
 import android.app.Application;
 import com.facebook.react.PackageList;
