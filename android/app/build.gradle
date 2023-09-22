@@ -74,7 +74,6 @@ android {
 
     compileSdkVersion rootProject.ext.compileSdkVersion
 
-    namespace "com.emresafacelik.recipeapp"
     defaultConfig {
         applicationId "com.emresafacelik.recipeapp"
         minSdkVersion rootProject.ext.minSdkVersion
