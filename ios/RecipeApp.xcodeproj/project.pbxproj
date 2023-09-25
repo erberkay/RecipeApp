@@ -467,11 +467,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.berkayer.$(PRODUCT_NAME:rfc1034identifier)";
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
->>>>>>> parent of ca6d35f (iOS firebase installation completed)
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RecipeApp.app/RecipeApp";
 			};
@@ -495,11 +491,7 @@
 					"-lc++",
 					"$(inherited)",
 				);
-<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.berkayer.$(PRODUCT_NAME:rfc1034identifier)";
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
->>>>>>> parent of ca6d35f (iOS firebase installation completed)
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RecipeApp.app/RecipeApp";
 			};
@@ -529,11 +521,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-<<<<<<< HEAD
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.berkayer.RecipeApp;
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
->>>>>>> parent of ca6d35f (iOS firebase installation completed)
 				PRODUCT_NAME = RecipeApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -565,11 +553,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-<<<<<<< HEAD
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.berkayer.RecipeApp;
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
->>>>>>> parent of ca6d35f (iOS firebase installation completed)
 				PRODUCT_NAME = RecipeApp;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
