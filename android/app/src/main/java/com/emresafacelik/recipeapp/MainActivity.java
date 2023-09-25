@@ -1,4 +1,4 @@
-package com.berkayer.recipeapp;
+package com.emresafacelik.recipeapp;
 
 import android.os.Bundle;
 
