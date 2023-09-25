@@ -468,11 +468,7 @@
 					"$(inherited)",
 				);
 <<<<<<< HEAD
-<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.berkayer.$(PRODUCT_NAME:rfc1034identifier)";
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
->>>>>>> parent of ca6d35f (iOS firebase installation completed)
 =======
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 >>>>>>> parent of ca6d35f (iOS firebase installation completed)
@@ -500,11 +496,7 @@
 					"$(inherited)",
 				);
 <<<<<<< HEAD
-<<<<<<< HEAD
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.berkayer.$(PRODUCT_NAME:rfc1034identifier)";
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
->>>>>>> parent of ca6d35f (iOS firebase installation completed)
 =======
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 >>>>>>> parent of ca6d35f (iOS firebase installation completed)
@@ -538,11 +530,7 @@
 					"-lc++",
 				);
 <<<<<<< HEAD
-<<<<<<< HEAD
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.berkayer.RecipeApp;
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
->>>>>>> parent of ca6d35f (iOS firebase installation completed)
 =======
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 >>>>>>> parent of ca6d35f (iOS firebase installation completed)
@@ -578,11 +566,7 @@
 					"-lc++",
 				);
 <<<<<<< HEAD
-<<<<<<< HEAD
 				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = org.reactjs.native.berkayer.RecipeApp;
-=======
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
->>>>>>> parent of ca6d35f (iOS firebase installation completed)
 =======
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 >>>>>>> parent of ca6d35f (iOS firebase installation completed)
