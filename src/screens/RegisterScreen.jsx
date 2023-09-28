@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet,Alert } from 'react-native';
 
 import UsernameIcon from '../assets/icons/UsernameIcon';
 import EmailIcon from '../assets/icons/EmailIcon';
 import PasswordIcon from '../assets/icons/PasswordIcon';
 import OpenEyeIcon from '../assets/icons/OpenEyeIcon';
 import ClosedEyeIcon from '../assets/icons/ClosedEyeIcon';
-
+import { auth } from '../utility/firebase';
 import useAuth from '../utility/Auth';
 
 const RegisterScreen = ({navigation}) =>  {
@@ -66,11 +66,23 @@ const RegisterScreen = ({navigation}) =>  {
       </View>
       
       <TouchableOpacity 
-        onPress={() => {
-          if (Register(username, email, password, confirmPassword)) {
-            navigation.navigate('LoginScreen')
+        onPress={async () => {
+          try {
+            console.log('result:', )
+          
+              if (confirmPassword === password && username.length > 0 && 
+                  email.length > 0 && password.length)
+                  {let result = await auth().createUserWithEmailAndPassword(email, password)
+                  auth().currentUser.sendEmailVerification
+                  console.log('result:', result)}
+                  if (auth().currentUser){
+                    navigation.navigate("HomeScreen")
+                  }
           }
-        }} 
+          catch (error) {
+              Alert.alert(error.code)
+          }
+      }} 
         style={styles.registerButton}
       >
         <Text style={styles.registerButtonText}>Register</Text>

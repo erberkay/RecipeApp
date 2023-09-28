@@ -3,7 +3,7 @@ import {
     TouchableOpacity,
     Text,
 } from 'react-native'
-
+import { auth } from "../utility/firebase";
 import useAuth from "../utility/Auth";
 
 const MenuScreen = () => {
@@ -12,7 +12,7 @@ const MenuScreen = () => {
     return (
         <TouchableOpacity
             onPress={() => {
-                SignOut()
+                auth().signOut()
             }}
         >
             <Text>Çıkış Yap</Text>

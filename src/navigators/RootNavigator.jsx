@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from '../screens/HomeScreen';
 import MenuScreen from '../screens/MenuScreen';
+import SeeAllScreen from '../screens/SeeAllScreens';
 
 const Stack = createNativeStackNavigator();
 
@@ -21,6 +22,10 @@ const RootNavigator = () => {
       <Stack.Screen
         name="MenuScreen"
         component={MenuScreen}
+      />
+      <Stack.Screen
+        name="SeeAllScreen"
+        component={SeeAllScreen}
       />
     </Stack.Navigator>
   );

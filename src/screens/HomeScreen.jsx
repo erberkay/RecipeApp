@@ -12,7 +12,7 @@ import SearchIcon from '../assets/icons/SearchIcon';
 import FavoriteIcon from '../assets/icons/FavoriteIcon';
 import NotFavoriteIcon from '../assets/icons/NotFavoriteIcon';
 import TimeIcon from '../assets/icons/TimeIcon';
-
+import { auth } from '../utility/firebase';
 const MMKV = new MMKVLoader().initialize()
 
 const getImageResources = (imageName) => {
@@ -97,9 +97,8 @@ const HomeScreen = ({ navigation }) => {
         <View style={styles.rowFlexMarginEight}>
           <Text style={styles.welcomeText}>Welcome</Text>
           <Text style={styles.usernameText}>
-            {' ' + getUser().username.charAt(0).toUpperCase() + getUser().username.slice(1)}
             {
-              // Capitalized first character of the name.
+             auth().currentUser.email.slice(0, auth().currentUser.email.indexOf('@'))
             }
           </Text> 
         </View>
@@ -124,7 +123,11 @@ const HomeScreen = ({ navigation }) => {
         <View>
           <View style={{...styles.rowFlexMarginEight, justifyContent: 'space-between'}}>
             <Text style={styles.lineText}>Today's Fresh Recipe</Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('SeeAllScreen')
+            }}
+            >
               <Text style={styles.linePressableText}>See All</Text>
             </TouchableOpacity>
           </View>
@@ -172,7 +175,10 @@ const HomeScreen = ({ navigation }) => {
         <View>
           <View style={{...styles.rowFlexMarginEight, justifyContent: 'space-between'}}>
             <Text style={styles.lineText}>Recommended</Text>
-            <TouchableOpacity>
+            <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('SeeAllScreen')
+            }}>
               <Text style={styles.linePressableText}>See All</Text>
             </TouchableOpacity>
           </View>
