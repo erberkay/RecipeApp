@@ -1,5 +1,7 @@
 import { initializeApp } from '@react-native-firebase/app'
 import auth from '@react-native-firebase/auth'
+import firestore from "@react-native-firebase/firestore"
+import storage from "@react-native-firebase/storage"
 
 const firebaseConfig = {
   apiKey: "AIzaSyDy-R2QpwT-Q0EBo34DtCr-nqOFDgL4SWU",
@@ -12,4 +14,4 @@ const firebaseConfig = {
 };
 const app = initializeApp(firebaseConfig)
 
-export { auth }
+export { auth, firestore,storage }
