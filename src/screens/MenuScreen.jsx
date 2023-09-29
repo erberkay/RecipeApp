@@ -2,21 +2,38 @@ import React from "react";
 import {
     TouchableOpacity,
     Text,
+    View,
 } from 'react-native'
-import { auth } from "../utility/firebase";
-import useAuth from "../utility/Auth";
 
-const MenuScreen = () => {
-    const { SignOut } = useAuth()
+// import useAuth from "../utility/Auth";
+
+import ImageCropPicker from "react-native-image-crop-picker";
+
+import { auth } from "../utility/firebase";
+
+const MenuScreen = ({navigation}) => {
+    // const { SignOut } = useAuth()
     
     return (
-        <TouchableOpacity
-            onPress={() => {
-                auth().signOut()
-            }}
-        >
-            <Text>Çıkış Yap</Text>
-        </TouchableOpacity>
+        <View>
+            <TouchableOpacity
+                onPress={() => {
+                    auth().signOut()
+                    // SignOut()
+                }}
+            >
+                <Text>Çıkış Yap</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+                onPress={() => {
+                    navigation.navigate('ProfileScreen')
+                }}
+            >
+                <Text>Profili gör</Text>
+            </TouchableOpacity>
+
+        </View>
     )
 }
 

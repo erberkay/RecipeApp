@@ -5,8 +5,10 @@ import UsernameIcon from '../assets/icons/UsernameIcon';
 import PasswordIcon from '../assets/icons/PasswordIcon';
 import OpenEyeIcon from '../assets/icons/OpenEyeIcon';
 import ClosedEyeIcon from '../assets/icons/ClosedEyeIcon';
-import { auth } from '../utility/firebase';
+
 import useAuth from '../utility/Auth';
+
+import { auth } from '../utility/firebase';
 
 const LoginScreen = ({navigation}) =>  {
   const [username, setUsername] = useState('')
@@ -14,7 +16,7 @@ const LoginScreen = ({navigation}) =>  {
 
   const [passwordSecure, setPasswordSecure] = useState(true)
 
-  const { Login } = useAuth();
+  // const { Login } = useAuth();
 
   return (
     <View style={styles.container}>
@@ -53,12 +55,12 @@ const LoginScreen = ({navigation}) =>  {
       </View>
       
       <TouchableOpacity 
-       onPress={async () => {
-        if (username.length > 0 && password.length > 0) {
-          auth().signInWithEmailAndPassword(username,password)
-        }
-        }
-    } 
+        onPress={() => {
+          if (username.length > 0 && password.length > 0) {
+            auth().signInWithEmailAndPassword(username, password)
+          }
+          // Login(username, password)
+        }} 
         style={styles.loginButton}
       >
         <Text style={styles.loginButtonText}>Login</Text>

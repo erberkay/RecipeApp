@@ -3,8 +3,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import HomeScreen from '../screens/HomeScreen';
 import MenuScreen from '../screens/MenuScreen';
-import SeeAllScreen from '../screens/SeeAllScreens';
-
+import SeeAllScreen from '../screens/SeeAllScreens'
+import ProfileScreen from '../screens/ProfileScreen';
 const Stack = createNativeStackNavigator();
 
 // set options in the pages
@@ -26,6 +26,10 @@ const RootNavigator = () => {
       <Stack.Screen
         name="SeeAllScreen"
         component={SeeAllScreen}
+      />
+      <Stack.Screen
+        name="ProfileScreen"
+        component={ProfileScreen}
       />
     </Stack.Navigator>
   );

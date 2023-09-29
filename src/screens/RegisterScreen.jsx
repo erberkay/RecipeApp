@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet,Alert } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert } from 'react-native';
 
 import UsernameIcon from '../assets/icons/UsernameIcon';
 import EmailIcon from '../assets/icons/EmailIcon';
 import PasswordIcon from '../assets/icons/PasswordIcon';
 import OpenEyeIcon from '../assets/icons/OpenEyeIcon';
 import ClosedEyeIcon from '../assets/icons/ClosedEyeIcon';
+
+// import useAuth from '../utility/Auth';
+
 import { auth } from '../utility/firebase';
-import useAuth from '../utility/Auth';
 
 const RegisterScreen = ({navigation}) =>  {
   const [username, setUsername] = useState('')
@@ -18,7 +20,7 @@ const RegisterScreen = ({navigation}) =>  {
   const [passwordSecure, setPasswordSecure] = useState(true)
   const [passwordConfirmSecure, setPasswordConfirmSecure] = useState(true)
 
-  const { Register } = useAuth();
+  // const { Register } = useAuth();
 
   return (
     <View style={styles.container}>
@@ -68,21 +70,19 @@ const RegisterScreen = ({navigation}) =>  {
       <TouchableOpacity 
         onPress={async () => {
           try {
-            console.log('result:', )
-          
-              if (confirmPassword === password && username.length > 0 && 
-                  email.length > 0 && password.length)
-                  {let result = await auth().createUserWithEmailAndPassword(email, password)
-                  auth().currentUser.sendEmailVerification
-                  console.log('result:', result)}
-                  if (auth().currentUser){
-                    navigation.navigate("HomeScreen")
-                  }
+            // firebase kullanıcı adı ile giriş yapmak için destek sağlamıyor 
+            if (confirmPassword === password && username.length > 0 && email.length > 0 && password.length > 0) {
+              let result = await auth().createUserWithEmailAndPassword(email, password)
+              auth().currentUser.sendEmailVerification()
+              console.log('result:', result)
+            }
+          } catch (error) {
+            Alert.alert(error.code)
           }
-          catch (error) {
-              Alert.alert(error.code)
-          }
-      }} 
+          // if (Register(username, email, password, confirmPassword)) {
+          //   navigation.navigate('LoginScreen')
+          // }
+        }} 
         style={styles.registerButton}
       >
         <Text style={styles.registerButtonText}>Register</Text>
